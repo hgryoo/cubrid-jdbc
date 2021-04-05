@@ -47,9 +47,9 @@ public class CUBRIDTimestamp extends Timestamp {
     }
 
     public static CUBRIDTimestamp valueOf(String s, boolean isdt) {
-                    Timestamp tmptime = Timestamp.valueOf(s);
-                CUBRIDTimestamp cub_tmptime = new CUBRIDTimestamp(tmptime.getTime(), isdt);
-            return cub_tmptime;
+        Timestamp tmptime = Timestamp.valueOf(s);
+        CUBRIDTimestamp cub_tmptime = new CUBRIDTimestamp(tmptime.getTime(), isdt);
+        return cub_tmptime;
     }
 
     public static boolean isTimestampType(Timestamp o) {
