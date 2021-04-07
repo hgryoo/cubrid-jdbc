@@ -34,10 +34,10 @@ package cubrid.jdbc.driver;
 import cubrid.jdbc.jci.UUType;
 
 import java.io.Flushable;
-    import java.io.IOException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-        import java.sql.Blob;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -88,9 +88,9 @@ public class CUBRIDBlob implements Blob {
         }
 
         this.conn = conn;
-                isWritable = false;
+        isWritable = false;
         this.isLobLocator = isLobLocator;
-                lobHandle = new CUBRIDLobHandle(UUType.U_TYPE_BLOB, packedLobHandle, isLobLocator);
+        lobHandle = new CUBRIDLobHandle(UUType.U_TYPE_BLOB, packedLobHandle, isLobLocator);
     }
 
     /*
@@ -209,14 +209,14 @@ public class CUBRIDBlob implements Blob {
 
             int real_write_len, write_len, total_write_len = 0;
 
- while (len > 0) {
+            while (len > 0) {
                 write_len = Math.min(len, BLOB_MAX_IO_LENGTH);
                 real_write_len =
                         conn.lobWrite(
                                 lobHandle.getPackedLobHandle(), pos, bytes, offset, write_len);
 
                 pos += real_write_len;
-                    len -= real_write_len;
+                len -= real_write_len;
                 offset += real_write_len;
                 total_write_len += real_write_len;
             }
