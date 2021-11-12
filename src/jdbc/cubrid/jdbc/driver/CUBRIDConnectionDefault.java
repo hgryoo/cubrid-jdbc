@@ -34,10 +34,12 @@ package cubrid.jdbc.driver;
 import cubrid.jdbc.jci.UConnection;
 import cubrid.jdbc.jci.UServerSideConnection;
 import cubrid.jdbc.jci.UStatement;
+import cubrid.jdbc.jci.UUserInfo;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * Title: CUBRID JDBC Driver Description:
@@ -157,5 +159,17 @@ public class CUBRIDConnectionDefault extends CUBRIDConnection {
         error = null;
         shard_mdata = null;
         is_closed = true;
+    }
+
+    /* JDK 1.6 */
+    @Override
+    public Properties getClientInfo() throws SQLException {
+        UUserInfo info = getJciConnection().getUserInfo();
+
+        Properties props = new Properties();
+        if (info != null) {
+            props = info.toProperties();
+        }
+        return props;
     }
 }
