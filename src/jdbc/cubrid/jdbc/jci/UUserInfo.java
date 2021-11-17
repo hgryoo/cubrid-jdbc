@@ -41,6 +41,8 @@ public class UUserInfo {
     private String dbHost;
     private String dbUser;
 
+    private Properties properties = null;
+
     UUserInfo(String bName, String cName, String name, String host, String user) {
         brokerName = bName;
         casName = cName;
@@ -70,12 +72,14 @@ public class UUserInfo {
     }
 
     public Properties toProperties() {
-        Properties props = new Properties();
-        props.put("broker_name", brokerName);
-        props.put("cas_name", casName);
-        props.put("db_name", dbName);
-        props.put("db_host", dbHost);
-        props.put("db_user", dbUser);
-        return props;
+        if (properties == null) {
+            properties = new Properties();
+            properties.put("broker", brokerName);
+            properties.put("client", casName);
+            properties.put("db", dbName);
+            properties.put("user", dbUser);
+            properties.put("ip", dbHost);
+        }
+        return properties;
     }
 }
