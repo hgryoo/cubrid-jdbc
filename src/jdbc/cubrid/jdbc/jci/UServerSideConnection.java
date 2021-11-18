@@ -249,9 +249,9 @@ public class UServerSideConnection extends UConnection {
                 String casName = inBuffer.readString(inBuffer.readInt(), charSet);
                 String dbName = inBuffer.readString(inBuffer.readInt(), charSet);
                 String dbUser = inBuffer.readString(inBuffer.readInt(), charSet);
-                String dbHost = inBuffer.readString(inBuffer.readInt(), charSet);
+                String ip = inBuffer.readString(inBuffer.readInt(), charSet);
 
-                userInfo = new UUserInfo(brokerName, casName, dbName, dbUser, dbHost);
+                userInfo = new UUserInfo(brokerName, casName, dbName, dbUser, ip);
                 return userInfo;
             } catch (UJciException e) {
                 logException(e);

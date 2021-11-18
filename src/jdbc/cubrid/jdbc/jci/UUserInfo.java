@@ -38,17 +38,17 @@ public class UUserInfo {
     private String brokerName;
     private String casName;
     private String dbName;
-    private String dbHost;
     private String dbUser;
+    private String ipAddr;
 
     private Properties properties = null;
 
-    UUserInfo(String bName, String cName, String name, String host, String user) {
+    UUserInfo(String bName, String cName, String name, String user, String ip) {
         brokerName = bName;
         casName = cName;
         dbName = name;
-        dbHost = host;
         dbUser = user;
+        ipAddr = ip;
     }
 
     public String getBrokerName() {
@@ -63,8 +63,8 @@ public class UUserInfo {
         return dbName;
     }
 
-    public String getDbHost() {
-        return dbHost;
+    public String getIpAddress() {
+        return ipAddr;
     }
 
     public String getDbUser() {
@@ -78,7 +78,7 @@ public class UUserInfo {
             properties.put("client", casName);
             properties.put("db", dbName);
             properties.put("user", dbUser);
-            properties.put("ip", dbHost);
+            properties.put("ip", ipAddr);
         }
         return properties;
     }
